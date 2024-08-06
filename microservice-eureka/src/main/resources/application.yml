@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: msvc-eureka #nombre de la aplicacion
+  config:
+    import: optional:configserver:http://localhost:8888 #configuracion temporal para poder correr el proyecto antes de configurar config

@@ -1,0 +1,15 @@
+server:
+  port: 8761 #puerto del proyecto
+
+spring:
+  application:
+    name: msvc-eureka #nombre de la aplicacion
+eureka:
+  instance:
+    hostname: localhost #host del servidor eureka
+  client:
+    register-with-eureka: false #para que eureka no se registre asi mismo
+    fetch-registry: false #para que eureka no se registre asi mismo
+    server-url:
+      defaulZone: http://localhost:${server.port}/eureka/ #path donde va a funcionar eureka
+
