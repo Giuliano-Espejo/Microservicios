@@ -1,0 +1,103 @@
+# DOCKER
+El comando $ docker build -t apigateway-dockerfile . se utiliza para crear una imagen de Docker a partir de un archivo Dockerfile en el directorio actual. A continuación te explico cada parte del comando:
+
+docker build: Es el comando principal que le indica a Docker que construya una nueva imagen a partir de un Dockerfile.
+
+-t apigateway-dockerfile: La opción -t permite etiquetar la imagen que estás construyendo con un nombre. En este caso, la imagen se etiquetará como apigateway-dockerfile. Este nombre puede incluir un "tag" opcional usando nombre:tag, pero si no se especifica, se asigna el tag latest por defecto.
+
+. (punto): Indica el contexto de construcción, que en este caso es el directorio actual. Docker buscará un archivo llamado Dockerfile en este directorio para construir la imagen. El contexto también incluye todos los archivos y subdirectorios en el directorio actual, los cuales pueden ser necesarios durante el proceso de construcción (por ejemplo, si se copian archivos dentro de la imagen).
+
+-f Dockerfile.layered: Indica que se debe utilizar el archivo Dockerfile.layered en lugar del archivo Dockerfile por defecto. Este archivo define cómo se construye la imagen en capas.
+
+-----
+
+El comando docker compose up -d se utiliza para iniciar los servicios definidos en un archivo docker-compose.yml en modo detached (en segundo plano). Aquí te explico qué hace cada parte del comando:
+
+docker compose: Es la versión moderna del comando docker-compose, que forma parte del CLI de Docker para gestionar aplicaciones de múltiples contenedores.
+
+up: Inicia los servicios definidos en el archivo docker-compose.yml. Si los contenedores no existen, los creará; si ya existen, los iniciará.
+
+-d: Especifica el modo detached, lo que significa que Docker ejecutará los contenedores en segundo plano y no mostrará la salida de los logs en la terminal.
+
+-----
+
+Dockerfile.layered
+El archivo Dockerfile.layered que has compartido está diseñado para optimizar el proceso de construcción y despliegue de una aplicación Spring Boot utilizando capas. Este enfoque permite que las capas que cambian menos frecuentemente (como dependencias) sean reutilizadas en múltiples builds, lo que reduce el tiempo de construcción y el tamaño de la imagen cuando solo el código de la aplicación cambia.
+Explicación del Dockerfile.layered
+Primera fase: Builder
+
+dockerfile
+Copiar código
+FROM eclipse-temurin:17.0.4.1_1-jre as builder
+WORKDIR extracted
+ADD target/*.jar app.jar
+RUN java -Djarmode=layertools -jar app.jar extract
+Base de la imagen: Se utiliza la imagen eclipse-temurin:17.0.4.1_1-jre, que es una distribución de OpenJDK basada en Temurin, para la construcción del proyecto.
+Añadir JAR: Se añade el archivo .jar construido desde el directorio target a la carpeta de trabajo dentro del contenedor.
+Extraer las capas: Se ejecuta un comando con la opción -Djarmode=layertools que es específica de Spring Boot. Esto extrae el contenido del archivo JAR en diferentes capas:
+dependencies: Dependencias del proyecto.
+spring-boot-loader: Cargador de Spring Boot.
+snapshot-dependencies: Dependencias snapshot.
+application: El código de la aplicación.
+Segunda fase: Final
+
+dockerfile
+Copiar código
+FROM eclipse-temurin:17.0.4.1_1-jre
+WORKDIR application
+COPY --from=builder extracted/dependencies/ ./
+COPY --from=builder extracted/spring-boot-loader/ ./
+COPY --from=builder extracted/snapshot-dependencies/ ./
+COPY --from=builder extracted/application/ ./
+EXPOSE 8080
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+Base de la imagen: Se utiliza nuevamente la imagen eclipse-temurin:17.0.4.1_1-jre.
+Copiar capas: Las capas extraídas durante la fase de construcción se copian en la imagen final, cada una en su propia etapa.
+Exponer el puerto: Se expone el puerto 8080, que es el puerto por defecto en el que Spring Boot corre.
+Punto de entrada: Se define el punto de entrada para la aplicación usando JarLauncher, que es el cargador de Spring Boot para ejecutar la aplicación.
+Ventajas del enfoque basado en capas
+Eficiencia en el Cache: Docker utiliza una caché de capas para acelerar las construcciones. Las capas de dependencias que no cambian a menudo se reutilizan, haciendo que las reconstrucciones sean más rápidas.
+
+Imágenes más pequeñas: Dado que solo las capas cambiadas se actualizan, el tamaño de la imagen resultante puede ser más pequeño.
+
+Despliegue más rápido: En entornos donde la velocidad es crítica, el despliegue es más rápido porque solo las capas modificadas deben ser enviadas al entorno de producción.
+
+Este enfoque es ideal para proyectos donde las dependencias cambian con poca frecuencia en comparación con el código de la aplicación.
+
+-------------
+
+# Plugin jib-maven-plugin
+
+El plugin jib-maven-plugin de Google Cloud Tools es una herramienta que facilita la construcción y despliegue de imágenes Docker directamente desde un proyecto Maven sin necesidad de escribir un Dockerfile o de tener Docker instalado. A continuación te explico cómo funciona el código que has compartido:
+
+Descripción del Plugin
+xml
+Copiar código
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>3.2.1</version>
+    <configuration>
+        <from>
+            <image>eclipse-temurin:17.0.4.1_1-jre</image>
+        </from>
+        <to><image>registry.hub.docker.com/giulianoespejo/${artifactId}</image></to>
+    </configuration>
+</plugin>
+Partes Clave del Plugin
+from:
+
+<image>eclipse-temurin:17.0.4.1_1-jre</image>: Define la imagen base que se utilizará para construir la imagen final. En este caso, se está utilizando una imagen de Java Runtime Environment (JRE) basada en Eclipse Temurin versión 17.0.4.1. Esta es la imagen que contendrá el entorno de ejecución necesario para tu aplicación.
+to:
+
+<image>registry.hub.docker.com/saiupadhyayula007/${artifactId}</image>: Define el destino donde se publicará la imagen construida. Aquí, se está especificando que la imagen se subirá al registro de Docker Hub bajo el usuario saiupadhyayula007, y el nombre de la imagen será el valor de ${artifactId}, que generalmente corresponde al nombre del proyecto en Maven.
+Automatización del Proceso:
+
+Este plugin permite construir y desplegar la imagen sin necesidad de escribir un Dockerfile manualmente. Jib optimiza la construcción de la imagen creando capas de manera inteligente, lo que mejora la velocidad de construcción y despliegue, especialmente en entornos CI/CD.
+¿Para Qué Sirve?
+Este plugin es útil cuando quieres:
+
+Simplificar la construcción de imágenes Docker: Evitas la necesidad de escribir y mantener un Dockerfile.
+Optimizar la construcción de imágenes: Jib divide tu aplicación en capas para que solo las partes modificadas necesiten ser reconstruidas.
+Desplegar imágenes fácilmente: Jib puede subir la imagen resultante a un registro de contenedores como Docker Hub, Google Container Registry, Amazon ECR, entre otros.
+En resumen, este plugin te facilita la creación y despliegue de imágenes Docker para tu aplicación Java/Maven de manera más sencilla y eficiente.
