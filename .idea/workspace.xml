@@ -5,34 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b61d015e-e0ec-426b-9b03-e1978b6f1e63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e49a30c2b890eb46533ff9110e5c9bfcc62e686" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42fe59561cc8d8d2b0066e6dca2b3f1c55fadba5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/446054c8454c772505e9ccaceda832acabb41b6f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b532dd8aae96922d15f9f604cad664ec743c4ce3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bfe2c907685f5d543b0c97f4e6361aeb3aca384e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c9959fddd5953ca6d45cee4fcc8aa9c319b1dcb6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/1/f1402d60f1c6f529a2c6d11282f6a4ec5d845a15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/e/2e49a30c2b890eb46533ff9110e5c9bfcc62e686" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/2/42fe59561cc8d8d2b0066e6dca2b3f1c55fadba5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/446054c8454c772505e9ccaceda832acabb41b6f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/5/b532dd8aae96922d15f9f604cad664ec743c4ce3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/f/bfe2c907685f5d543b0c97f4e6361aeb3aca384e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/9/c9959fddd5953ca6d45cee4fcc8aa9c319b1dcb6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/1/f1402d60f1c6f529a2c6d11282f6a4ec5d845a15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-config/src/main/resources/configurations/msvc-course.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-config/src/main/resources/configurations/msvc-course.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-config/src/main/resources/configurations/msvc-student.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-config/src/main/resources/configurations/msvc-student.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-config/src/main/resources/configurations/msvc-eureka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-config/src/main/resources/configurations/msvc-eureka.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,17 +45,25 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.google.cloudcode.ide_session_index": "20240820_0001",
-    "last_opened_file_path": "C:/Users/Giuliano Espejo/OneDrive - alumnos.frm.utn.edu.ar/Escritorio/facultad/Metodologia de Sistemas/buensaborFinalBack/BuenSaborBack2",
+    "last_opened_file_path": "C:/Programacion/Microservicios/Microservicios/microservice-student",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Programacion\Microservicios\Microservicios\microservice-student" />
+      <recent name="C:\Programacion\Microservicios\Microservicios\microservice-eureka" />
+      <recent name="C:\Programacion\Microservicios\Microservicios\microservice-course" />
+      <recent name="C:\Programacion\Microservicios\Microservicios\microservice-config" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="ls" />
     </option>
   </component>
-  <component name="RunManager" selected="Docker.microservice-gateway/Dockerfile">
+  <component name="RunManager">
     <configuration name="MicroserviceConfigApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.microservice.config.MicroserviceConfigApplication" />
       <module name="microservice-config" />
@@ -136,10 +119,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.microservice-gateway/Dockerfile" />
         <item itemvalue="Application.MicroserviceStudentApplication" />
         <item itemvalue="Application.MicroserviceEurekaApplication" />
         <item itemvalue="Application.MicroserviceConfigApplication" />
+        <item itemvalue="Docker.microservice-gateway/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
