@@ -1,15 +1,14 @@
-# Usa una imagen base de Docker para ejecutar Docker Compose
-FROM docker:20.10.7-dind
+# Usa una imagen base de Docker (por ejemplo, Ubuntu, Alpine, etc.)
+FROM ubuntu:latest
 
 # Instala Docker Compose
-RUN apk add --no-cache py3-pip && \
-    pip install docker-compose
+RUN apt-get update && apt-get install -y docker-compose
 
-# Copia el archivo docker-compose.yml al contenedor
-COPY docker-compose.yml /docker-compose.yml
+# Copia tu archivo `docker-compose.yml` al contenedor
+COPY docker-compose.yml /app/docker-compose.yml
 
 # Establece el directorio de trabajo
-WORKDIR /
+WORKDIR /app
 
-# Ejecuta Docker Compose
+# Ejecuta el comando `docker-compose up --build`
 CMD ["docker-compose", "up", "--build"]
